@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
               );
             default:
               if (snapshot.hasError) {
-                return buildText('Something wen wrong');
+                return buildText('Something went wrong');
               } else {
                 final trainings = snapshot.data;
 
