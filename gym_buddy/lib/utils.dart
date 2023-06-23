@@ -1,4 +1,8 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: unnecessary_null_comparison
+
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Utils {
@@ -6,4 +10,28 @@ class Utils {
       ScaffoldMessenger.of(context)
         ..removeCurrentSnackBar()
         ..showSnackBar(SnackBar(content: Text(text)));
+
+  static DateTime toDateToTime(Timestamp value) {
+    if (value == null) return value.toDate();
+    return value.toDate();
+  }
+
+  static dynamic fromDateTimeToJson(DateTime date) {
+    if (date == null) return null;
+
+    return date.toUtc();
+  }
+
+  static StreamTransformer<QuerySnapshot<Map<String, dynamic>>, List<T>>
+      transformer<T>(T Function(Map<String, dynamic> json) fromJson) =>
+          StreamTransformer<QuerySnapshot<Map<String, dynamic>>,
+              List<T>>.fromHandlers(
+            handleData: (QuerySnapshot<Map<String, dynamic>> data,
+                EventSink<List<T>> sink) {
+              final snaps = data.docs.map((doc) => doc.data()).toList();
+              final objects = snaps.map((json) => fromJson(json)).toList();
+
+              sink.add(objects);
+            },
+          );
 }

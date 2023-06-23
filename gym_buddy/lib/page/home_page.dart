@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gym_buddy/api/firebase_api.dart';
 import 'package:gym_buddy/main.dart';
+import 'package:gym_buddy/model/training.dart';
+import 'package:gym_buddy/provider/trainings.dart';
 import 'package:gym_buddy/widget/done_training_widget.dart';
 import 'package:gym_buddy/widget/training_list.dart';
+import 'package:provider/provider.dart';
 
 import '../widget/add_training_dialog.dart';
 
@@ -45,7 +49,28 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: tabs[selectedIndex],
+      body: StreamBuilder<List<Training>>(
+        stream: FirebaseApi.readTraining(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            default:
+              if (snapshot.hasError) {
+                return buildText('Something wen wrong');
+              } else {
+                final trainings = snapshot.data;
+
+                final provider = Provider.of<TrainingsProvider>(context);
+                provider.setTrainings(trainings!);
+
+                return tabs[selectedIndex];
+              }
+          }
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue,
         onPressed: () => showDialog(
@@ -62,3 +87,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+Widget buildText(String text) => Center(
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 24, color: Colors.white),
+      ),
+    );

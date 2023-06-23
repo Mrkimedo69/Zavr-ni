@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "148567898777",
+    "firebase_url": "https://zavrsni-gymbuddy-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "zavrsni-gymbuddy",
+    "storage_bucket": "zavrsni-gymbuddy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148567898777:android:03cd46bf336a3ef1f15608",
+        "android_client_info": {
+          "package_name": "com.example.gym_buddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148567898777-dr1e06nike14gbtf16lp04rr244vif9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEKAszDQNLc9HkuaTohrN3BtrRTPmCHLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148567898777-dr1e06nike14gbtf16lp04rr244vif9l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
