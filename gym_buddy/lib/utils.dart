@@ -1,7 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:async';
-import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -30,8 +30,7 @@ class Utils {
                 EventSink<List<T>> sink) {
               final snaps = data.docs.map((doc) => doc.data()).toList();
               final objects = snaps.map((json) => fromJson(json)).toList();
-              log(objects as String);
-              print(objects);
+
               sink.add(objects);
             },
           );
