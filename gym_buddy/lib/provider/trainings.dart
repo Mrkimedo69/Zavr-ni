@@ -5,15 +5,31 @@ class TrainingsProvider extends ChangeNotifier {
   final List<Training> _trainings = [
     Training(
       createdTime: DateTime.now(),
-      title: 'Bench',
+      title: 'Chest',
+      description: '''
+      - Bench
+      - Flys
+      - Incline Bench
+      - Push Ups''',
     ),
     Training(
       createdTime: DateTime.now(),
-      title: 'Squat',
+      title: 'Legs',
+      description: '''
+      - Squat
+      - Leg Press
+      - RDLs
+      - Leg Extensions
+      ''',
     ),
     Training(
       createdTime: DateTime.now(),
-      title: 'Deadlift',
+      title: 'Back',
+      description: '''
+      - DeadLift
+      - Rows
+      - Pull Ups
+      ''',
     ),
   ];
 
